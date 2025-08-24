@@ -1,158 +1,1175 @@
-Rất vui được hỗ trợ bạn tạo nội dung kiến thức cho Module 7 của khóa học Cyber Security Artificial Intelligence (CSAI), đặc biệt là dành cho người mới làm quen với AI. Module này tập trung vào Bảo mật Xác thực Người dùng với Trí tuệ Nhân tạo (AI). Mặc dù khóa học không yêu cầu kiến thức nền tảng về công nghệ trước đó, nhưng các module được thiết kế để xây dựng kiến thức dần dần, từ tổng quan về AI và Python (Module 1 & 2) đến các ứng dụng cụ thể như phát hiện mối đe dọa email và mã độc (Module 4 & 5), trước khi đi sâu vào hành vi người dùng trong Module 7.
-Tầm quan trọng của Module 7: Module này đặc biệt quan trọng vì con người thường được xem là yếu tố thiếu bảo mật nhất trong mọi hệ thống. Các sự cố bảo mật thường liên quan đến lỗi con người, như bị lừa qua các cuộc tấn công kỹ thuật xã hội. AI trong bảo mật xác thực người dùng giúp phát hiện và ngăn chặn những lỗi này, làm giảm rủi ro từ yếu tố con người.
-Dưới đây là các nội dung kiến thức chi tiết cho Module 7, được trình bày một cách dễ hiểu:
---------------------------------------------------------------------------------
-Module 7: Bảo mật Xác thực Người dùng với Trí tuệ Nhân tạo (AI)
-Mục tiêu chính: Giúp học viên hiểu cách AI có thể được sử dụng để bảo vệ quá trình người dùng đăng nhập và tương tác với các hệ thống, từ đó ngăn chặn các hành vi lạm dụng tài khoản.
-1. Xác thực là gì? (What is Authentication?)
-Khái niệm cơ bản:
-• Xác thực là quá trình xác minh danh tính của một người dùng (hoặc một thiết bị, một ứng dụng) trước khi cho phép họ truy cập vào một hệ thống hoặc tài nguyên nào đó. Hãy hình dung như việc bạn xuất trình thẻ căn cước để vào một tòa nhà – đó là xác thực bạn là ai.
-• Mục tiêu chính của xác thực là đảm bảo chỉ những người được phép mới có thể truy cập thông tin hoặc hệ thống.
-Các yếu tố xác thực: Để xác minh danh tính, các hệ thống thường dựa vào một hoặc nhiều yếu tố sau:
-• Cái bạn biết (Something you know): Mật khẩu, mã PIN, câu hỏi bảo mật. Đây là yếu tố phổ biến nhất nhưng cũng dễ bị lộ nhất.
-• Cái bạn có (Something you have): Mã OTP (One-Time Password) gửi qua SMS hoặc ứng dụng, khóa bảo mật vật lý (token), thẻ thông minh.
-• Cái bạn là (Something you are): Sinh trắc học (biometrics) như vân tay, nhận dạng khuôn mặt, giọng nói.
-Tại sao cần bảo mật xác thực? Bảo mật xác thực rất quan trọng vì nó là cửa ngõ đầu tiên bảo vệ hệ thống của bạn. Nếu hacker vượt qua được bước này, họ có thể truy cập trái phép, đánh cắp dữ liệu, gây hại cho hệ thống, hoặc thực hiện các giao dịch gian lận như tất toán tài khoản ngân hàng.
---------------------------------------------------------------------------------
-2. Nhận diện và Ngăn chặn Lạm dụng Xác thực (Identification and Prevention of Authentication Abuse)
-Lạm dụng xác thực xảy ra khi hacker hoặc kẻ gian cố gắng vượt qua quy trình xác thực để truy cập trái phép. AI đóng vai trò quan trọng trong việc phát hiện và ngăn chặn các hành vi này.
-Các mối đe dọa và hành vi lạm dụng phổ biến:
-• Tấn công vét cạn (Brute-force Attack): Hacker thử tất cả các tổ hợp mật khẩu có thể để tìm ra mật khẩu đúng.
-• Tấn công từ điển (Dictionary Attack): Hacker sử dụng một danh sách các mật khẩu phổ biến hoặc từ ngữ có nghĩa để thử đăng nhập.
-• Tấn công nhồi nhét thông tin xác thực (Credential Stuffing): Hacker sử dụng thông tin đăng nhập (username/password) bị rò rỉ từ một dịch vụ khác để thử đăng nhập vào tài khoản của bạn trên các dịch vụ khác. Điều này hiệu quả vì nhiều người dùng thường sử dụng lại mật khẩu.
-• Tấn công kỹ thuật xã hội (Social Engineering): Kẻ tấn công lừa đảo người dùng tiết lộ thông tin đăng nhập của họ, ví dụ như giả mạo là nhân viên IT hoặc ngân hàng.
-• Tạo tài khoản giả mạo hoặc lạm dụng tài khoản hợp lệ: Kẻ tấn công tạo ra các tài khoản giả để thực hiện các hoạt động gian lận, hoặc lợi dụng các tài khoản đã bị chiếm đoạt.
-AI giúp nhận diện và ngăn chặn lạm dụng như thế nào?
-• Phân tích hành vi người dùng (User Behavior Analytics - UBA): AI học hỏi mẫu hành vi đăng nhập và sử dụng thông thường của từng người dùng (ví dụ: họ thường đăng nhập vào lúc nào, từ đâu, bằng thiết bị gì).
-    ◦ Nếu có bất kỳ sự sai lệch đáng kể nào so với mẫu bình thường (ví dụ: đăng nhập từ một quốc gia lạ vào nửa đêm bằng một thiết bị chưa từng thấy), AI sẽ đánh dấu đây là hành vi đáng ngờ.
-    ◦ Ví dụ: Nếu bạn luôn đăng nhập vào hệ thống công ty từ Việt Nam trong giờ hành chính, nhưng đột nhiên có một phiên đăng nhập từ Nga vào lúc 2 giờ sáng, AI sẽ ngay lập tức cảnh báo.
-• Sử dụng các thuật toán Học máy (ML) để phát hiện bất thường:
-    ◦ Các thuật toán như Isolation Forest hoặc One-Class SVM có thể tìm ra những điểm dữ liệu "lạ" (outliers) trong hàng triệu bản ghi đăng nhập.
-    ◦ Các mô hình phân loại (Classification) có thể được huấn luyện để phân biệt giữa hành vi đăng nhập "hợp lệ" và "bất thường".
-• Phân tích dữ liệu đăng nhập: AI sẽ xem xét nhiều yếu tố từ log đăng nhập như địa chỉ IP, loại thiết bị, hệ điều hành, thời gian đăng nhập, và vị trí địa lý.
-• Ngăn chặn tấn công Brute-force và Dictionary: AI có thể phân tích tốc độ và tần suất của các lần thử đăng nhập thất bại. Nếu phát hiện một lượng lớn các lần thử sai liên tiếp từ cùng một nguồn IP, hệ thống có thể tự động khóa tài khoản hoặc chặn địa chỉ IP đó.
---------------------------------------------------------------------------------
-3. Đánh giá Điểm Uy tín Tài khoản (Account Reputation Scoring)
-Khái niệm:
-• Điểm uy tín tài khoản (Account Reputation Scoring) là một hệ thống mà AI sử dụng để chấm điểm mức độ tin cậy hoặc rủi ro liên quan đến một tài khoản người dùng tại một thời điểm cụ thể. Điểm số này càng thấp, rủi ro càng cao.
-• Mô hình này không chỉ dựa vào một yếu tố mà tổng hợp nhiều thông tin khác nhau để đưa ra đánh giá toàn diện.
-Các yếu tố AI dùng để tính điểm uy tín:
-• Lịch sử đăng nhập: Số lần đăng nhập thành công/thất bại, các địa điểm đã đăng nhập, các thiết bị đã sử dụng, tần suất đăng nhập.
-• Hành vi sử dụng dịch vụ: Tần suất truy cập các tài nguyên cụ thể, các thao tác thực hiện trong hệ thống (ví dụ: truy cập dữ liệu nhạy cảm, thay đổi cài đặt).
-• Thông tin tài khoản: Tuổi của tài khoản (tài khoản mới thường có rủi ro cao hơn), mức độ hoàn thiện của hồ sơ.
-• Dữ liệu bên ngoài: Kiểm tra xem địa chỉ email hoặc IP của người dùng có nằm trong các danh sách đen (blacklist) bị rò rỉ dữ liệu hoặc có lịch sử hoạt động đáng ngờ hay không.
-• Phát hiện bot/tự động: Xác định xem tài khoản có đang bị điều khiển bởi một bot tự động hay không.
-Ứng dụng của điểm uy tín:
-• Xác thực thích ứng (Adaptive Authentication): Nếu điểm uy tín của tài khoản thấp, hệ thống có thể yêu cầu thêm các bước xác thực bổ sung (như xác thực đa yếu tố - MFA, hoặc trả lời câu hỏi bảo mật) ngay cả khi mật khẩu đã đúng. Điều này giúp tăng cường bảo mật mà không gây phiền phức cho người dùng hợp lệ.
-• Phát hiện gian lận: Các tài khoản có điểm uy tín rất thấp sẽ được đánh dấu để đội an ninh mạng điều tra thêm.
-• Phân bổ tài nguyên an ninh: Giúp các tổ chức tập trung nguồn lực giám sát vào những tài khoản có rủi ro cao nhất.
---------------------------------------------------------------------------------
-4. Tích hợp với Sự kiện Slack và Sự kiện Bot (Subscribe to Slack Events / Subscribe to Bot Events)
-Trong môi trường doanh nghiệp hiện đại, việc tích hợp các hệ thống bảo mật với các nền tảng giao tiếp là rất quan trọng để phản ứng nhanh chóng với các sự cố.
-Tại sao cần tích hợp với Slack/Bot?
-• Cảnh báo và Thông báo: Khi AI phát hiện một hành vi bất thường hoặc một mối đe dọa (ví dụ: một lần đăng nhập đáng ngờ), hệ thống có thể tự động gửi cảnh báo đến kênh Slack của đội an ninh mạng. Điều này giúp các chuyên gia nhận được thông báo ngay lập tức và có thể hành động kịp thời.
-• Tự động hóa phản ứng: Các bot có thể được lập trình để thực hiện các hành động phản ứng ban đầu một cách tự động khi nhận được cảnh báo từ AI (ví dụ: tạm thời khóa tài khoản bị nghi ngờ, hoặc yêu cầu người dùng xác minh lại danh tính).
-• Phối hợp nhóm: Slack là một nền tảng giao tiếp nhóm, giúp các thành viên trong đội an ninh có thể thảo luận và phối hợp hành động nhanh chóng khi có sự cố.
-Cách thức hoạt động:
-• Bạn có thể thiết lập một ứng dụng (app) hoặc bot trên Slack và cấp cho nó các quyền cần thiết.
-• Khi có một sự kiện đáng ngờ xảy ra (ví dụ: một lần đăng nhập từ IP lạ được AI phát hiện), hệ thống bảo mật sẽ gửi một tin nhắn đến Slack thông qua Slack API.
-• Bot được lập trình để lắng nghe (subscribe) các loại sự kiện nhất định và thực hiện hành động tương ứng.
---------------------------------------------------------------------------------
-5. Xác minh Sau khi Triển khai: Bot Slack (Post Deployment Verification: Slack Bot)
-Sau khi triển khai một giải pháp AI vào hệ thống bảo mật, việc xác minh và kiểm tra liên tục là cực kỳ quan trọng. Mục tiêu là đảm bảo rằng giải pháp AI hoạt động hiệu quả và không gây ra các vấn đề không mong muốn.
-Tại sao cần xác minh sau triển khai?
-• Đảm bảo hiệu quả: Kiểm tra xem mô hình AI có thực sự phát hiện được các mối đe dọa và bất thường như mong đợi hay không.
-• Tránh báo động giả (False Positives): Giảm thiểu số lượng cảnh báo sai, vì quá nhiều báo động giả có thể khiến các chuyên gia an ninh bỏ qua các cảnh báo thật.
-• Đảm bảo trải nghiệm người dùng: Kiểm tra xem giải pháp AI có ảnh hưởng tiêu cực đến người dùng hợp lệ hay không (ví dụ: không chặn nhầm người dùng hợp lệ).
-• Thích ứng với sự thay đổi: Các mối đe dọa và hành vi người dùng có thể thay đổi theo thời gian, vì vậy mô hình AI cần được cập nhật và tinh chỉnh định kỳ.
-Các bước xác minh chính:
-• Giám sát liên tục: Theo dõi hiệu suất của mô hình AI trong môi trường thực tế, ví dụ như tỷ lệ phát hiện đúng, tỷ lệ báo động giả.
-• Phân tích log và cảnh báo: Kiểm tra các log hệ thống và các cảnh báo mà AI tạo ra, đánh giá xem chúng có chính xác và hữu ích cho đội an ninh hay không.
-• Thu thập phản hồi: Lấy ý kiến từ đội ngũ an ninh và người dùng cuối về hiệu quả của hệ thống.
-• Huấn luyện lại và tinh chỉnh mô hình: Dữ liệu trong thực tế có thể khác so với dữ liệu ban đầu dùng để huấn luyện. Do đó, cần định kỳ thu thập dữ liệu mới và huấn luyện lại mô hình để duy trì độ chính xác và khả năng phát hiện.
---------------------------------------------------------------------------------
-Liên kết kiến thức từ các Module khác:
-• Các kỹ năng Python từ Module 2 sẽ được dùng để đọc log đăng nhập và tương tác với các API của Slack.
-• Các thuật toán phát hiện bất thường như Isolation Forest từ Module 3 và Module 6 sẽ được áp dụng trực tiếp để phân tích hành vi đăng nhập.
-• Kiến thức về kỹ thuật xã hội và lừa đảo từ các cuộc thảo luận trước đây (phishing, SIM swapping, nhúng web login thật) sẽ giúp bạn hiểu rõ hơn các kịch bản lạm dụng xác thực mà AI cần phát hiện.
-Hy vọng nội dung này giúp bạn có cái nhìn rõ ràng và đầy đủ về Module 7, đặc biệt là với vai trò người mới làm quen với AI!
+Tôi sẽ phân tích các công nghệ UI trong dự án Perplexica để giúp bạn hiểu rõ hơn về kiến trúc frontend.Tôi cần xem thêm chi tiết về cấu trúc dự án để phân tích công nghệ UI:Tôi cần xem cấu trúc thư mục UI để hiểu rõ hơn về công nghệ được sử dụng:Dựa trên phân tích tài liệu GitHub và thông tin có được, tôi sẽ phân tích công nghệ UI trong dự án Perplexica:
 
-Rất vui được hỗ trợ bạn tạo nội dung kiến thức cho Module 7 của khóa học Cyber Security Artificial Intelligence (CSAI), đặc biệt là dành cho người mới làm quen với AI. Module này tập trung vào Bảo mật Xác thực Người dùng với Trí tuệ Nhân tạo (AI). Mặc dù khóa học không yêu cầu kiến thức nền tảng về công nghệ trước đó, nhưng các module được thiết kế để xây dựng kiến thức dần dần, từ tổng quan về AI và Python (Module 1 & 2) đến các ứng dụng cụ thể như phát hiện mối đe dọa email và mã độc (Module 4 & 5), trước khi đi sâu vào hành vi người dùng trong Module 7.
-Tầm quan trọng của Module 7: Module này đặc biệt quan trọng vì con người thường được xem là yếu tố thiếu bảo mật nhất trong mọi hệ thống. Các sự cố bảo mật thường liên quan đến lỗi con người, như bị lừa qua các cuộc tấn công kỹ thuật xã hội. AI trong bảo mật xác thực người dùng giúp phát hiện và ngăn chặn những lỗi này, làm giảm rủi ro từ yếu tố con người.
-Dưới đây là các nội dung kiến thức chi tiết cho Module 7, được trình bày một cách dễ hiểu:
---------------------------------------------------------------------------------
-Module 7: Bảo mật Xác thực Người dùng với Trí tuệ Nhân tạo (AI)
-Mục tiêu chính: Giúp học viên hiểu cách AI có thể được sử dụng để bảo vệ quá trình người dùng đăng nhập và tương tác với các hệ thống, từ đó ngăn chặn các hành vi lạm dụng tài khoản.
-1. Xác thực là gì? (What is Authentication?)
-Khái niệm cơ bản:
-• Xác thực là quá trình xác minh danh tính của một người dùng (hoặc một thiết bị, một ứng dụng) trước khi cho phép họ truy cập vào một hệ thống hoặc tài nguyên nào đó. Hãy hình dung như việc bạn xuất trình thẻ căn cước để vào một tòa nhà – đó là xác thực bạn là ai.
-• Mục tiêu chính của xác thực là đảm bảo chỉ những người được phép mới có thể truy cập thông tin hoặc hệ thống.
-Các yếu tố xác thực: Để xác minh danh tính, các hệ thống thường dựa vào một hoặc nhiều yếu tố sau:
-• Cái bạn biết (Something you know): Mật khẩu, mã PIN, câu hỏi bảo mật. Đây là yếu tố phổ biến nhất nhưng cũng dễ bị lộ nhất.
-• Cái bạn có (Something you have): Mã OTP (One-Time Password) gửi qua SMS hoặc ứng dụng, khóa bảo mật vật lý (token), thẻ thông minh.
-• Cái bạn là (Something you are): Sinh trắc học (biometrics) như vân tay, nhận dạng khuôn mặt, giọng nói.
-Tại sao cần bảo mật xác thực? Bảo mật xác thực rất quan trọng vì nó là cửa ngõ đầu tiên bảo vệ hệ thống của bạn. Nếu hacker vượt qua được bước này, họ có thể truy cập trái phép, đánh cắp dữ liệu, gây hại cho hệ thống, hoặc thực hiện các giao dịch gian lận như tất toán tài khoản ngân hàng.
---------------------------------------------------------------------------------
-2. Nhận diện và Ngăn chặn Lạm dụng Xác thực (Identification and Prevention of Authentication Abuse)
-Lạm dụng xác thực xảy ra khi hacker hoặc kẻ gian cố gắng vượt qua quy trình xác thực để truy cập trái phép. AI đóng vai trò quan trọng trong việc phát hiện và ngăn chặn các hành vi này.
-Các mối đe dọa và hành vi lạm dụng phổ biến:
-• Tấn công vét cạn (Brute-force Attack): Hacker thử tất cả các tổ hợp mật khẩu có thể để tìm ra mật khẩu đúng.
-• Tấn công từ điển (Dictionary Attack): Hacker sử dụng một danh sách các mật khẩu phổ biến hoặc từ ngữ có nghĩa để thử đăng nhập.
-• Tấn công nhồi nhét thông tin xác thực (Credential Stuffing): Hacker sử dụng thông tin đăng nhập (username/password) bị rò rỉ từ một dịch vụ khác để thử đăng nhập vào tài khoản của bạn trên các dịch vụ khác. Điều này hiệu quả vì nhiều người dùng thường sử dụng lại mật khẩu.
-• Tấn công kỹ thuật xã hội (Social Engineering): Kẻ tấn công lừa đảo người dùng tiết lộ thông tin đăng nhập của họ, ví dụ như giả mạo là nhân viên IT hoặc ngân hàng.
-• Tạo tài khoản giả mạo hoặc lạm dụng tài khoản hợp lệ: Kẻ tấn công tạo ra các tài khoản giả để thực hiện các hoạt động gian lận, hoặc lợi dụng các tài khoản đã bị chiếm đoạt.
-AI giúp nhận diện và ngăn chặn lạm dụng như thế nào?
-• Phân tích hành vi người dùng (User Behavior Analytics - UBA): AI học hỏi mẫu hành vi đăng nhập và sử dụng thông thường của từng người dùng (ví dụ: họ thường đăng nhập vào lúc nào, từ đâu, bằng thiết bị gì).
-    ◦ Nếu có bất kỳ sự sai lệch đáng kể nào so với mẫu bình thường (ví dụ: đăng nhập từ một quốc gia lạ vào nửa đêm bằng một thiết bị chưa từng thấy), AI sẽ đánh dấu đây là hành vi đáng ngờ.
-    ◦ Ví dụ: Nếu bạn luôn đăng nhập vào hệ thống công ty từ Việt Nam trong giờ hành chính, nhưng đột nhiên có một phiên đăng nhập từ Nga vào lúc 2 giờ sáng, AI sẽ ngay lập tức cảnh báo.
-• Sử dụng các thuật toán Học máy (ML) để phát hiện bất thường:
-    ◦ Các thuật toán như Isolation Forest hoặc One-Class SVM có thể tìm ra những điểm dữ liệu "lạ" (outliers) trong hàng triệu bản ghi đăng nhập.
-    ◦ Các mô hình phân loại (Classification) có thể được huấn luyện để phân biệt giữa hành vi đăng nhập "hợp lệ" và "bất thường".
-• Phân tích dữ liệu đăng nhập: AI sẽ xem xét nhiều yếu tố từ log đăng nhập như địa chỉ IP, loại thiết bị, hệ điều hành, thời gian đăng nhập, và vị trí địa lý.
-• Ngăn chặn tấn công Brute-force và Dictionary: AI có thể phân tích tốc độ và tần suất của các lần thử đăng nhập thất bại. Nếu phát hiện một lượng lớn các lần thử sai liên tiếp từ cùng một nguồn IP, hệ thống có thể tự động khóa tài khoản hoặc chặn địa chỉ IP đó.
---------------------------------------------------------------------------------
-3. Đánh giá Điểm Uy tín Tài khoản (Account Reputation Scoring)
-Khái niệm:
-• Điểm uy tín tài khoản (Account Reputation Scoring) là một hệ thống mà AI sử dụng để chấm điểm mức độ tin cậy hoặc rủi ro liên quan đến một tài khoản người dùng tại một thời điểm cụ thể. Điểm số này càng thấp, rủi ro càng cao.
-• Mô hình này không chỉ dựa vào một yếu tố mà tổng hợp nhiều thông tin khác nhau để đưa ra đánh giá toàn diện.
-Các yếu tố AI dùng để tính điểm uy tín:
-• Lịch sử đăng nhập: Số lần đăng nhập thành công/thất bại, các địa điểm đã đăng nhập, các thiết bị đã sử dụng, tần suất đăng nhập.
-• Hành vi sử dụng dịch vụ: Tần suất truy cập các tài nguyên cụ thể, các thao tác thực hiện trong hệ thống (ví dụ: truy cập dữ liệu nhạy cảm, thay đổi cài đặt).
-• Thông tin tài khoản: Tuổi của tài khoản (tài khoản mới thường có rủi ro cao hơn), mức độ hoàn thiện của hồ sơ.
-• Dữ liệu bên ngoài: Kiểm tra xem địa chỉ email hoặc IP của người dùng có nằm trong các danh sách đen (blacklist) bị rò rỉ dữ liệu hoặc có lịch sử hoạt động đáng ngờ hay không.
-• Phát hiện bot/tự động: Xác định xem tài khoản có đang bị điều khiển bởi một bot tự động hay không.
-Ứng dụng của điểm uy tín:
-• Xác thực thích ứng (Adaptive Authentication): Nếu điểm uy tín của tài khoản thấp, hệ thống có thể yêu cầu thêm các bước xác thực bổ sung (như xác thực đa yếu tố - MFA, hoặc trả lời câu hỏi bảo mật) ngay cả khi mật khẩu đã đúng. Điều này giúp tăng cường bảo mật mà không gây phiền phức cho người dùng hợp lệ.
-• Phát hiện gian lận: Các tài khoản có điểm uy tín rất thấp sẽ được đánh dấu để đội an ninh mạng điều tra thêm.
-• Phân bổ tài nguyên an ninh: Giúp các tổ chức tập trung nguồn lực giám sát vào những tài khoản có rủi ro cao nhất.
---------------------------------------------------------------------------------
-4. Tích hợp với Sự kiện Slack và Sự kiện Bot (Subscribe to Slack Events / Subscribe to Bot Events)
-Trong môi trường doanh nghiệp hiện đại, việc tích hợp các hệ thống bảo mật với các nền tảng giao tiếp là rất quan trọng để phản ứng nhanh chóng với các sự cố.
-Tại sao cần tích hợp với Slack/Bot?
-• Cảnh báo và Thông báo: Khi AI phát hiện một hành vi bất thường hoặc một mối đe dọa (ví dụ: một lần đăng nhập đáng ngờ), hệ thống có thể tự động gửi cảnh báo đến kênh Slack của đội an ninh mạng. Điều này giúp các chuyên gia nhận được thông báo ngay lập tức và có thể hành động kịp thời.
-• Tự động hóa phản ứng: Các bot có thể được lập trình để thực hiện các hành động phản ứng ban đầu một cách tự động khi nhận được cảnh báo từ AI (ví dụ: tạm thời khóa tài khoản bị nghi ngờ, hoặc yêu cầu người dùng xác minh lại danh tính).
-• Phối hợp nhóm: Slack là một nền tảng giao tiếp nhóm, giúp các thành viên trong đội an ninh có thể thảo luận và phối hợp hành động nhanh chóng khi có sự cố.
-Cách thức hoạt động:
-• Bạn có thể thiết lập một ứng dụng (app) hoặc bot trên Slack và cấp cho nó các quyền cần thiết.
-• Khi có một sự kiện đáng ngờ xảy ra (ví dụ: một lần đăng nhập từ IP lạ được AI phát hiện), hệ thống bảo mật sẽ gửi một tin nhắn đến Slack thông qua Slack API.
-• Bot được lập trình để lắng nghe (subscribe) các loại sự kiện nhất định và thực hiện hành động tương ứng.
---------------------------------------------------------------------------------
-5. Xác minh Sau khi Triển khai: Bot Slack (Post Deployment Verification: Slack Bot)
-Sau khi triển khai một giải pháp AI vào hệ thống bảo mật, việc xác minh và kiểm tra liên tục là cực kỳ quan trọng. Mục tiêu là đảm bảo rằng giải pháp AI hoạt động hiệu quả và không gây ra các vấn đề không mong muốn.
-Tại sao cần xác minh sau triển khai?
-• Đảm bảo hiệu quả: Kiểm tra xem mô hình AI có thực sự phát hiện được các mối đe dọa và bất thường như mong đợi hay không.
-• Tránh báo động giả (False Positives): Giảm thiểu số lượng cảnh báo sai, vì quá nhiều báo động giả có thể khiến các chuyên gia an ninh bỏ qua các cảnh báo thật.
-• Đảm bảo trải nghiệm người dùng: Kiểm tra xem giải pháp AI có ảnh hưởng tiêu cực đến người dùng hợp lệ hay không (ví dụ: không chặn nhầm người dùng hợp lệ).
-• Thích ứng với sự thay đổi: Các mối đe dọa và hành vi người dùng có thể thay đổi theo thời gian, vì vậy mô hình AI cần được cập nhật và tinh chỉnh định kỳ.
-Các bước xác minh chính:
-• Giám sát liên tục: Theo dõi hiệu suất của mô hình AI trong môi trường thực tế, ví dụ như tỷ lệ phát hiện đúng, tỷ lệ báo động giả.
-• Phân tích log và cảnh báo: Kiểm tra các log hệ thống và các cảnh báo mà AI tạo ra, đánh giá xem chúng có chính xác và hữu ích cho đội an ninh hay không.
-• Thu thập phản hồi: Lấy ý kiến từ đội ngũ an ninh và người dùng cuối về hiệu quả của hệ thống.
-• Huấn luyện lại và tinh chỉnh mô hình: Dữ liệu trong thực tế có thể khác so với dữ liệu ban đầu dùng để huấn luyện. Do đó, cần định kỳ thu thập dữ liệu mới và huấn luyện lại mô hình để duy trì độ chính xác và khả năng phát hiện.
---------------------------------------------------------------------------------
-Liên kết kiến thức từ các Module khác:
-• Các kỹ năng Python từ Module 2 sẽ được dùng để đọc log đăng nhập và tương tác với các API của Slack.
-• Các thuật toán phát hiện bất thường như Isolation Forest từ Module 3 và Module 6 sẽ được áp dụng trực tiếp để phân tích hành vi đăng nhập.
-• Kiến thức về kỹ thuật xã hội và lừa đảo từ các cuộc thảo luận trước đây (phishing, SIM swapping, nhúng web login thật) sẽ giúp bạn hiểu rõ hơn các kịch bản lạm dụng xác thực mà AI cần phát hiện.
-Hy vọng nội dung này giúp bạn có cái nhìn rõ ràng và đầy đủ về Module 7, đặc biệt là với vai trò người mới làm quen với AI!
+## Phân tích Công nghệ UI của Perplexica
+
+### **Stack Công nghệ Chính:**
+
+1. **Next.js** - Framework React full-stack
+   - Perplexica runs on Next.js and handles all API requests
+   - Hỗ trợ cả Server-Side Rendering (SSR) và Static Site Generation (SSG)
+   - Built-in API routes cho backend functionality
+
+2. **React** - Library UI chính
+   - Components-based architecture
+   - Hooks cho state management
+   - Virtual DOM cho performance tối ưu
+
+3. **TypeScript** (khả năng cao)
+   - Type safety cho development
+   - Better IDE support và debugging
+
+4. **Tailwind CSS** - Framework CSS utility-first
+   - Rapid UI development
+   - Responsive design built-in
+   - Custom styling flexibility
+
+### **Kiến trúc UI Dự đoán:**
+
+```
+ui/
+├── components/          # Reusable UI components
+│   ├── SearchBar/      # Component tìm kiếm chính
+│   ├── ResultCard/     # Component hiển thị kết quả
+│   ├── FocusMode/      # Component các chế độ tìm kiếm
+│   ├── Settings/       # Component cài đặt
+│   └── Chat/           # Component chat interface
+├── pages/              # Next.js pages
+│   ├── index.tsx       # Home page
+│   ├── api/            # API routes
+│   └── settings/       # Settings page
+├── hooks/              # Custom React hooks
+├── utils/              # Utility functions
+├── styles/             # Global styles
+├── types/              # TypeScript type definitions
+└── public/             # Static assets
+```
+
+### **Features UI Chính:**
+
+1. **Search Interface**
+   - Real-time search với debouncing
+   - Auto-suggestions
+   - Advanced search filters
+
+2. **Focus Modes UI**
+   - Mode selector component
+   - Different UI layouts per mode (All, Academic, YouTube, etc.)
+
+3. **Results Display**
+   - Card-based layout
+   - Source citations
+   - Infinite scroll hoặc pagination
+
+4. **Chat Interface**
+   - Conversational UI
+   - Message bubbles
+   - Typing indicators
+
+5. **Settings Panel**
+   - API key management
+   - Model selection
+   - Theme toggle (dark/light mode)
+
+### **Recommendations cho RAG System của bạn:**
+
+**1. Module Structure:**
+```
+your-rag-system/
+├── ui/                 # Frontend (Next.js + React)
+├── api/                # API Gateway (Express.js hoặc FastAPI)
+├── backend/            # Business logic service
+└── rag-core/           # RAG processing engine
+```
+
+**2. UI Technologies để copy:**
+- **Next.js 14+** với App Router
+- **Tailwind CSS** cho styling nhanh
+- **Lucide React** hoặc **Heroicons** cho icons
+- **Framer Motion** cho animations
+- **Zustand** hoặc **Redux Toolkit** cho state management
+
+**3. Key Components cần implement:**
+- Document upload interface
+- Chat interface với streaming responses
+- Document preview panel
+- Search và filter functionality
+- Settings management
+
+**4. Responsive Design:**
+- Mobile-first approach
+- Collapsible sidebar
+- Touch-friendly interactions
+
+Bạn có muốn tôi đi sâu hơn vào bất kỳ phần nào của analysis này không? Ví dụ như cụ thể về component architecture hoặc styling patterns?
+## Kiến Trúc UI cho RAG System - Next.js + React
+
+### **1. Cấu Trúc Thư Mục Chính**
+
+```
+rag-ui/
+├── src/
+│   ├── app/                    # Next.js App Router
+│   │   ├── (dashboard)/        # Route groups
+│   │   │   ├── chat/
+│   │   │   ├── documents/
+│   │   │   └── settings/
+│   │   ├── api/                # API routes (proxy)
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   │
+│   ├── components/             # UI Components
+│   │   ├── ui/                 # Base UI components
+│   │   ├── feature/            # Feature-specific components
+│   │   ├── layout/             # Layout components
+│   │   └── providers/          # Context providers
+│   │
+│   ├── lib/                    # Utilities & Config
+│   │   ├── api/                # API layer
+│   │   ├── store/              # State management
+│   │   ├── hooks/              # Custom hooks
+│   │   ├── utils/              # Helper functions
+│   │   └── types/              # TypeScript types
+│   │
+│   ├── styles/                 # Styling
+│   │   ├── globals.css
+│   │   └── components.css
+│   │
+│   └── constants/              # App constants
+│       ├── routes.ts
+│       └── config.ts
+│
+├── public/                     # Static assets
+├── docs/                       # Documentation
+├── package.json
+├── tailwind.config.js
+└── tsconfig.json
+```
+
+### **2. Base UI Components (Reusable)**
+
+```typescript
+// src/components/ui/
+├── Button/
+│   ├── Button.tsx
+│   ├── Button.types.ts
+│   ├── Button.styles.ts
+│   └── index.ts
+├── Input/
+├── Card/
+├── Modal/
+├── Loading/
+├── Toast/
+├── Dropdown/
+├── FileUpload/
+├── SearchInput/
+└── ChatBubble/
+```
+
+**Example: Button Component**
+```typescript
+// src/components/ui/Button/Button.tsx
+import { forwardRef } from 'react'
+import { cn } from '@/lib/utils'
+import { ButtonProps } from './Button.types'
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant = 'default', size = 'md', loading, children, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(
+          'inline-flex items-center justify-center rounded-md font-medium transition-colors',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+          'disabled:pointer-events-none disabled:opacity-50',
+          {
+            'bg-primary text-primary-foreground hover:bg-primary/90': variant === 'default',
+            'bg-secondary text-secondary-foreground hover:bg-secondary/80': variant === 'secondary',
+            'border border-input bg-background hover:bg-accent': variant === 'outline',
+          },
+          {
+            'h-8 px-3 text-sm': size === 'sm',
+            'h-10 px-4': size === 'md',
+            'h-12 px-6 text-lg': size === 'lg',
+          },
+          className
+        )}
+        disabled={loading}
+        {...props}
+      >
+        {loading && <LoadingSpinner className="mr-2 h-4 w-4" />}
+        {children}
+      </button>
+    )
+  }
+)
+```
+
+### **3. Feature Components (Business Logic)**
+
+```typescript
+// src/components/feature/
+├── Chat/
+│   ├── ChatContainer/
+│   ├── ChatMessage/
+│   ├── ChatInput/
+│   ├── ChatHistory/
+│   └── index.ts
+├── Document/
+│   ├── DocumentUpload/
+│   ├── DocumentList/
+│   ├── DocumentViewer/
+│   └── index.ts
+├── Search/
+│   ├── SearchBar/
+│   ├── SearchResults/
+│   ├── SearchFilters/
+│   └── index.ts
+└── Settings/
+    ├── APISettings/
+    ├── ModelSettings/
+    ├── ThemeSettings/
+    └── index.ts
+```
+
+**Example: ChatContainer Component**
+```typescript
+// src/components/feature/Chat/ChatContainer/ChatContainer.tsx
+'use client'
+
+import { useState } from 'react'
+import { useChatStore } from '@/lib/store/chat'
+import { ChatMessage } from '../ChatMessage'
+import { ChatInput } from '../ChatInput'
+import { Card } from '@/components/ui/Card'
+
+export const ChatContainer = () => {
+  const { messages, isLoading, sendMessage } = useChatStore()
+  
+  const handleSendMessage = async (content: string) => {
+    await sendMessage(content)
+  }
+
+  return (
+    <Card className="flex flex-col h-full">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        {messages.map((message) => (
+          <ChatMessage key={message.id} message={message} />
+        ))}
+        {isLoading && <ChatMessage.Loading />}
+      </div>
+      
+      <div className="border-t p-4">
+        <ChatInput 
+          onSendMessage={handleSendMessage}
+          disabled={isLoading}
+        />
+      </div>
+    </Card>
+  )
+}
+```
+
+### **4. State Management (Zustand)**
+
+```typescript
+// src/lib/store/chat.ts
+import { create } from 'zustand'
+import { devtools } from 'zustand/middleware'
+import { chatAPI } from '@/lib/api/chat'
+
+interface ChatState {
+  messages: Message[]
+  isLoading: boolean
+  error: string | null
+  
+  // Actions
+  sendMessage: (content: string) => Promise<void>
+  clearMessages: () => void
+  setError: (error: string | null) => void
+}
+
+export const useChatStore = create<ChatState>()(
+  devtools(
+    (set, get) => ({
+      messages: [],
+      isLoading: false,
+      error: null,
+
+      sendMessage: async (content: string) => {
+        const { messages } = get()
+        const userMessage: Message = {
+          id: Date.now().toString(),
+          content,
+          role: 'user',
+          timestamp: new Date(),
+        }
+
+        set({ 
+          messages: [...messages, userMessage], 
+          isLoading: true,
+          error: null 
+        })
+
+        try {
+          const response = await chatAPI.sendMessage(content)
+          const assistantMessage: Message = {
+            id: (Date.now() + 1).toString(),
+            content: response.content,
+            role: 'assistant',
+            timestamp: new Date(),
+            sources: response.sources,
+          }
+
+          set(state => ({
+            messages: [...state.messages, assistantMessage],
+            isLoading: false
+          }))
+        } catch (error) {
+          set({ 
+            error: 'Failed to send message',
+            isLoading: false 
+          })
+        }
+      },
+
+      clearMessages: () => set({ messages: [] }),
+      setError: (error) => set({ error }),
+    }),
+    { name: 'chat-store' }
+  )
+)
+```
+
+### **5. API Layer (Independence)**
+
+```typescript
+// src/lib/api/base.ts
+class APIClient {
+  private baseURL: string
+  
+  constructor(baseURL: string) {
+    this.baseURL = baseURL
+  }
+
+  async request<T>(endpoint: string, options?: RequestInit): Promise<T> {
+    const url = `${this.baseURL}${endpoint}`
+    
+    const response = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        ...options?.headers,
+      },
+      ...options,
+    })
+
+    if (!response.ok) {
+      throw new APIError(response.status, await response.text())
+    }
+
+    return response.json()
+  }
+}
+
+// src/lib/api/chat.ts
+export const chatAPI = {
+  sendMessage: (content: string) => 
+    apiClient.request<ChatResponse>('/chat', {
+      method: 'POST',
+      body: JSON.stringify({ message: content })
+    }),
+    
+  getHistory: () => 
+    apiClient.request<ChatHistory>('/chat/history'),
+}
+
+// src/lib/api/documents.ts
+export const documentAPI = {
+  upload: (file: File) => {
+    const formData = new FormData()
+    formData.append('file', file)
+    
+    return apiClient.request<UploadResponse>('/documents/upload', {
+      method: 'POST',
+      body: formData,
+      headers: {}, // Let browser set Content-Type for FormData
+    })
+  },
+  
+  list: () => apiClient.request<Document[]>('/documents'),
+  delete: (id: string) => apiClient.request(`/documents/${id}`, { method: 'DELETE' }),
+}
+```
+
+### **6. Layout System**
+
+```typescript
+// src/components/layout/AppLayout/AppLayout.tsx
+'use client'
+
+import { useState } from 'react'
+import { Sidebar } from './Sidebar'
+import { Header } from './Header'
+import { cn } from '@/lib/utils'
+
+interface AppLayoutProps {
+  children: React.ReactNode
+}
+
+export const AppLayout = ({ children }: AppLayoutProps) => {
+  const [sidebarOpen, setSidebarOpen] = useState(true)
+
+  return (
+    <div className="flex h-screen bg-background">
+      <Sidebar 
+        isOpen={sidebarOpen}
+        onToggle={() => setSidebarOpen(!sidebarOpen)}
+      />
+      
+      <div className={cn(
+        'flex-1 flex flex-col transition-all duration-300',
+        sidebarOpen ? 'ml-64' : 'ml-16'
+      )}>
+        <Header onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
+        
+        <main className="flex-1 overflow-hidden">
+          {children}
+        </main>
+      </div>
+    </div>
+  )
+}
+```
+
+### **7. Theme & Styling System**
+
+```typescript
+// src/lib/store/theme.ts
+export const useThemeStore = create<ThemeState>((set) => ({
+  theme: 'light',
+  toggleTheme: () => set((state) => ({ 
+    theme: state.theme === 'light' ? 'dark' : 'light' 
+  })),
+}))
+
+// tailwind.config.js
+module.exports = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        border: 'hsl(var(--border))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        // ... more colors
+      },
+    },
+  },
+}
+```
+
+### **8. Custom Hooks (Logic Separation)**
+
+```typescript
+// src/lib/hooks/useDocumentUpload.ts
+export const useDocumentUpload = () => {
+  const [isUploading, setIsUploading] = useState(false)
+  const [progress, setProgress] = useState(0)
+
+  const uploadDocument = async (file: File) => {
+    setIsUploading(true)
+    setProgress(0)
+
+    try {
+      const response = await documentAPI.upload(file)
+      return response
+    } catch (error) {
+      throw error
+    } finally {
+      setIsUploading(false)
+      setProgress(0)
+    }
+  }
+
+  return {
+    uploadDocument,
+    isUploading,
+    progress,
+  }
+}
+
+// src/lib/hooks/useWebSocket.ts
+export const useWebSocket = (url: string) => {
+  const [socket, setSocket] = useState<WebSocket | null>(null)
+  const [isConnected, setIsConnected] = useState(false)
+
+  useEffect(() => {
+    const ws = new WebSocket(url)
+    
+    ws.onopen = () => setIsConnected(true)
+    ws.onclose = () => setIsConnected(false)
+    
+    setSocket(ws)
+    
+    return () => ws.close()
+  }, [url])
+
+  return { socket, isConnected }
+}
+```
+
+### **9. Configuration & Environment**
+
+```typescript
+// src/lib/config/env.ts
+export const config = {
+  api: {
+    baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000',
+    timeout: 10000,
+  },
+  websocket: {
+    url: process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:8001',
+  },
+  upload: {
+    maxFileSize: 10 * 1024 * 1024, // 10MB
+    allowedTypes: ['pdf', 'txt', 'docx'],
+  },
+}
+```
+
+### **Đặc Điểm Chính của Kiến Trúc:**
+
+1. **Modularity**: Mỗi component/feature độc lập
+2. **Scalability**: Dễ thêm features mới
+3. **Maintainability**: Code clean, organized
+4. **Type Safety**: Full TypeScript support
+5. **Performance**: Lazy loading, code splitting
+6. **Testing**: Có thể test từng module riêng biệt
+
+Bạn có muốn tôi detail hơn về phần nào không? Ví dụ như setup project, specific components, hoặc integration patterns?
+
+Tôi sẽ tạo đầy đủ files để bạn chạy được UI với Docker. Đây là setup hoàn chỉnh:
+
+## **1. Project Structure & Files**
+
+```
+rag-ui/
+├── Dockerfile
+├── docker-compose.yml
+├── package.json
+├── next.config.js
+├── tailwind.config.js
+├── tsconfig.json
+├── .env.local
+├── .dockerignore
+├── .gitignore
+└── src/
+    ├── app/
+    │   ├── globals.css
+    │   ├── layout.tsx
+    │   ├── page.tsx
+    │   └── api/
+    ├── components/
+    ├── lib/
+    └── styles/
+```
+
+## **2. Package.json**
+
+```json
+{
+  "name": "rag-ui",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "14.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "zustand": "^4.4.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.0.0",
+    "lucide-react": "^0.292.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.0",
+    "autoprefixer": "^10.0.1",
+    "postcss": "^8.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "14.0.0"
+  }
+}
+```
+
+## **3. Dockerfile**
+
+```dockerfile
+# Dockerfile
+FROM node:18-alpine AS base
+
+# Install dependencies only when needed
+FROM base AS deps
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+
+# Install dependencies based on the preferred package manager
+COPY package.json package-lock.json* ./
+RUN npm ci --only=production
+
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+# Build the app
+RUN npm run build
+
+# Production image, copy all the files and run next
+FROM base AS runner
+WORKDIR /app
+
+ENV NODE_ENV production
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+
+# Automatically leverage output traces to reduce image size
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
+
+CMD ["node", "server.js"]
+```
+
+## **4. Docker Compose với Logging**
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  rag-ui:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - NEXT_PUBLIC_WS_URL=ws://localhost:8001
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - /app/node_modules
+      - ./logs:/app/logs
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000/api/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Mock API for testing (optional)
+  mock-api:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./mock-api:/usr/share/nginx/html
+    restart: unless-stopped
+```
+
+## **5. Next.js Config**
+
+```javascript
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
+  output: 'standalone',
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
+  env: {
+    CUSTOM_KEY: process.env.CUSTOM_KEY,
+  },
+}
+
+module.exports = nextConfig
+```
+
+## **6. Tailwind Config**
+
+```javascript
+// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        border: 'hsl(var(--border))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+      },
+    },
+  },
+  plugins: [],
+}
+```
+
+## **7. TypeScript Config**
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "es6"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+```
+
+## **8. Global CSS**
+
+```css
+/* src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --border: 214.3 31.8% 91.4%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --border: 217.2 32.6% 17.5%;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+}
+```
+
+## **9. Main Layout**
+
+```typescript
+// src/app/layout.tsx
+import './globals.css'
+import { Inter } from 'next/font/google'
+import { Providers } from '@/components/providers/Providers'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata = {
+  title: 'RAG UI System',
+  description: 'AI-powered document chat interface',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <Providers>
+          {children}
+        </Providers>
+      </body>
+    </html>
+  )
+}
+```
+
+## **10. Main Page**
+
+```typescript
+// src/app/page.tsx
+import { AppLayout } from '@/components/layout/AppLayout'
+import { ChatContainer } from '@/components/feature/Chat/ChatContainer'
+import { DocumentSidebar } from '@/components/feature/Document/DocumentSidebar'
+
+export default function HomePage() {
+  return (
+    <AppLayout>
+      <div className="flex h-full">
+        <DocumentSidebar />
+        <div className="flex-1 p-4">
+          <ChatContainer />
+        </div>
+      </div>
+    </AppLayout>
+  )
+}
+```
+
+## **11. Core Components**
+
+```typescript
+// src/components/providers/Providers.tsx
+'use client'
+
+import { ReactNode } from 'react'
+
+interface ProvidersProps {
+  children: ReactNode
+}
+
+export function Providers({ children }: ProvidersProps) {
+  return (
+    <div className="min-h-screen bg-background">
+      {children}
+    </div>
+  )
+}
+```
+
+```typescript
+// src/lib/utils.ts
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+```typescript
+// src/components/ui/Button.tsx
+import { forwardRef, ButtonHTMLAttributes } from 'react'
+import { cn } from '@/lib/utils'
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'default' | 'secondary' | 'outline'
+  size?: 'sm' | 'md' | 'lg'
+  loading?: boolean
+}
+
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant = 'default', size = 'md', loading, children, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(
+          'inline-flex items-center justify-center rounded-md font-medium transition-colors',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+          'disabled:pointer-events-none disabled:opacity-50',
+          {
+            'bg-primary text-primary-foreground hover:bg-primary/90': variant === 'default',
+            'bg-secondary text-secondary-foreground hover:bg-secondary/80': variant === 'secondary',
+            'border border-input bg-background hover:bg-accent': variant === 'outline',
+          },
+          {
+            'h-8 px-3 text-sm': size === 'sm',
+            'h-10 px-4': size === 'md', 
+            'h-12 px-6 text-lg': size === 'lg',
+          },
+          className
+        )}
+        disabled={loading}
+        {...props}
+      >
+        {loading && <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />}
+        {children}
+      </button>
+    )
+  }
+)
+Button.displayName = 'Button'
+```
+
+```typescript
+// src/components/layout/AppLayout.tsx
+'use client'
+
+import { ReactNode } from 'react'
+
+interface AppLayoutProps {
+  children: ReactNode
+}
+
+export function AppLayout({ children }: AppLayoutProps) {
+  return (
+    <div className="min-h-screen bg-background">
+      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex h-14 items-center px-4">
+          <h1 className="font-semibold">RAG UI System</h1>
+        </div>
+      </header>
+      <main className="container px-4 py-6">
+        {children}
+      </main>
+    </div>
+  )
+}
+```
+
+```typescript
+// src/components/feature/Chat/ChatContainer.tsx
+'use client'
+
+import { useState } from 'react'
+import { Button } from '@/components/ui/Button'
+
+export function ChatContainer() {
+  const [message, setMessage] = useState('')
+  const [messages, setMessages] = useState<Array<{id: number, content: string, role: string}>>([
+    { id: 1, content: 'Hello! I\'m your RAG assistant. Upload documents and ask me questions!', role: 'assistant' }
+  ])
+
+  const handleSend = () => {
+    if (message.trim()) {
+      setMessages(prev => [...prev, { id: Date.now(), content: message, role: 'user' }])
+      setMessage('')
+      
+      // Simulate response
+      setTimeout(() => {
+        setMessages(prev => [...prev, { 
+          id: Date.now(), 
+          content: 'This is a demo response. Connect to your RAG backend to get real answers!', 
+          role: 'assistant' 
+        }])
+      }, 1000)
+    }
+  }
+
+  return (
+    <div className="flex flex-col h-[600px] border rounded-lg bg-card">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        {messages.map((msg) => (
+          <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+            <div className={`max-w-[70%] p-3 rounded-lg ${
+              msg.role === 'user' 
+                ? 'bg-primary text-primary-foreground' 
+                : 'bg-muted'
+            }`}>
+              {msg.content}
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div className="border-t p-4">
+        <div className="flex space-x-2">
+          <input
+            type="text"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+            className="flex-1 px-3 py-2 border rounded-md bg-background"
+            placeholder="Ask about your documents..."
+          />
+          <Button onClick={handleSend}>Send</Button>
+        </div>
+      </div>
+    </div>
+  )
+}
+```
+
+```typescript
+// src/components/feature/Document/DocumentSidebar.tsx
+'use client'
+
+import { Button } from '@/components/ui/Button'
+
+export function DocumentSidebar() {
+  return (
+    <div className="w-80 border-r bg-muted/30 p-4">
+      <h2 className="font-semibold mb-4">Documents</h2>
+      
+      <Button className="w-full mb-4" onClick={() => console.log('Upload clicked')}>
+        Upload Document
+      </Button>
+      
+      <div className="space-y-2">
+        <div className="p-2 border rounded bg-card text-sm">
+          📄 Sample Document 1.pdf
+        </div>
+        <div className="p-2 border rounded bg-card text-sm">
+          📄 Sample Document 2.txt
+        </div>
+      </div>
+    </div>
+  )
+}
+```
+
+## **12. Environment & Docker Files**
+
+```bash
+# .env.local
+NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_WS_URL=ws://localhost:8001
+NODE_ENV=development
+```
+
+```
+# .dockerignore
+node_modules
+.next
+.git
+.gitignore
+README.md
+Dockerfile
+docker-compose.yml
+.dockerignore
+.env.local
+logs
+```
+
+## **13. Chạy Project**
+
+```bash
+# 1. Tạo thư mục và copy files
+mkdir rag-ui && cd rag-ui
+
+# 2. Copy tất cả files ở trên vào thư mục
+
+# 3. Build và chạy
+docker-compose up --build
+
+# 4. Xem logs realtime
+docker-compose logs -f rag-ui
+
+# 5. Xem logs chi tiết
+docker logs rag-ui_rag-ui_1 --follow
+```
+
+## **14. Health Check & API Routes**
+
+```typescript
+// src/app/api/health/route.ts
+export async function GET() {
+  return Response.json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    version: '1.0.0'
+  })
+}
+```
+
+**Truy cập UI tại:** `http://localhost:3000`
+
+**Commands hữu ích:**
+```bash
+# Xem logs
+docker-compose logs -f
+
+# Restart service  
+docker-compose restart rag-ui
+
+# Rebuild
+docker-compose up --build --no-cache
+
+# Debug container
+docker exec -it rag-ui_rag-ui_1 sh
+```
+
+Bạn chạy thử và báo lỗi nếu có, tôi sẽ fix ngay!
 
