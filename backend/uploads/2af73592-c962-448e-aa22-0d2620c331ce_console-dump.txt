@@ -1,0 +1,7 @@
+# 2025-08-05 19:18:46 by RouterOS 7.16.2
+# software id = C7CU-PGT9
+#
+Columns: TX, RX, TX-PACKETS, RX-PACKETS
+TX        RX       TX-PACKETS  RX-PACKETS
+39.0kbps  5.2kbps          25           8
+39.0kbps  5.2kbps          25           8

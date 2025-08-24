@@ -1,0 +1,19 @@
+backend/
+├── Dockerfile
+├── requirements.txt
+├── main.py
+├── config.py
+├── models/
+│   ├── __init__.py
+│   └── schemas.py
+├── services/
+│   ├── __init__.py
+│   ├── chat_service.py
+│   └── document_service.py
+├── routes/
+│   ├── __init__.py
+│   ├── chat.py
+│   └── documents.py
+└── utils/
+    ├── __init__.py
+    └── logger.py

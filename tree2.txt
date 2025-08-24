@@ -1,0 +1,19 @@
+rag-ui/
+├── Dockerfile
+├── docker-compose.yml
+├── package.json
+├── next.config.js
+├── tailwind.config.js
+├── tsconfig.json
+├── .env.local
+├── .dockerignore
+├── .gitignore
+└── src/
+    ├── app/
+    │   ├── globals.css
+    │   ├── layout.tsx
+    │   ├── page.tsx
+    │   └── api/
+    ├── components/
+    ├── lib/
+    └── styles/

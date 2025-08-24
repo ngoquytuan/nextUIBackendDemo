@@ -1,0 +1,40 @@
+# docker-compose.yml (Updated)
+version: '3.8'
+
+services:
+  rag-ui:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    volumes:
+      - ./src:/app/src:ro
+      - ./public:/app/public:ro
+      - ./package.json:/app/package.json:ro
+      - ./next.config.js:/app/next.config.js:ro
+      - ./tailwind.config.js:/app/tailwind.config.js:ro
+      - ./tsconfig.json:/app/tsconfig.json:ro
+      - /app/node_modules
+      - /app/.next
+    restart: unless-stopped
+    depends_on:
+      - rag-backend
+    command: npm run dev
+
+  rag-backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG=true
+    volumes:
+      - ./backend:/app:ro
+      - ./backend/uploads:/app/uploads
+      - ./backend/logs:/app/logs
+    restart: unless-stopped
+    command: python main.py
